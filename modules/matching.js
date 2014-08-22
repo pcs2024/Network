@@ -38,7 +38,7 @@ function is_location_matching(gps_x1, gps_y1, gps_x2,gps_y2){
 }
 
 
-function matching(gps_x, gps_y, time_info,req,res){
+function matching(gps_x, gps_y, time_info,facebook_info,req,res){
 
 	for(var i=-time_split; i<=time_split;i++){
 		var j=i+time_info;
@@ -87,5 +87,5 @@ exports.first_matching = function(req, res){
 	var gps_y=req.body.gps_y;
 	var time_info=req.body.time_info;
 	var facebook_info=req.body.facebook_info;
-	matching(gps_x, gps_y, time_info,req,res);
+	matching(gps_x, gps_y, time_info,facebook_info,req,res);
 };
