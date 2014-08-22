@@ -55,10 +55,12 @@ function matching(gps_x, gps_y, time_info,facebook_info,req,res){
 			for(var inner in almost_same){
 
 				if(is_location_matching(gps_x, gps_y,almost_same[j].gps_x,almost_same[j].gps_y)){
+					console.log("in")
 					remove_now(almost_same[j],almost_same[j].facebook_info)
 					res.json(almost_same[j].facebook_info)
 					break;	
 				}else if(inner==almost_same.length-1){
+					console.log("out1")
 					almost_same[time_info]=[];
 					data={}
 					data.facebook_info=facebook_info;
@@ -69,6 +71,7 @@ function matching(gps_x, gps_y, time_info,facebook_info,req,res){
 				}	
 			}
 		}else if(i==time_split){
+			console.log("out2")
 			almost_same[time_info]=[];
 			data={}
 			data.facebook_info=facebook_info;
