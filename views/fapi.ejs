@@ -1,7 +1,7 @@
 
 <html>
 <head>
-	<title>FaceBook Connecting</title>
+	<title>FaceBook Connecting<%=app_id%></title>
 	<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 </head>
 <body>
@@ -9,11 +9,12 @@
 <script>
       window.fbAsyncInit = function() {
         FB.init({
-          appId      : '{<%=app_id%>}',
+          appId      : '<%=app_id%>',
           xfbml      : true,
           version    : 'v2.0'
         });
         FB.getLoginStatus(function(obj){
+        	console.log(obj)
         	var params={
         		gps_x:<%=gps_x%>,
         		gps_y:<%=gps_y%>,

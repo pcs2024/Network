@@ -12,5 +12,5 @@ exports.fapi = function(req, res){
 	var gps_y=req.params.gps_y;
 	var time_info=req.params.time_info;
 	if(gps_x&&gps_y&&time_info)
-	res.render('fapi', { app_id: '1451602315119345' }, {gps_x:gps_x},{gps_y:gps_y},{time_info:time_info})
+	res.render('fapi', { app_id: 432971433511985,gps_x:gps_x,gps_y:gps_y,time_info:time_info })
 };
