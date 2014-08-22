@@ -50,6 +50,7 @@ function matching(gps_x, gps_y, time_info,facebook_info,req,res){
 			j=j+60;
 
 		}
+		console.log(almost_same[j])
 		if(almost_same[j]!=undefined&&almost_same[j].length>0)
 		{
 			for(var inner in almost_same){
