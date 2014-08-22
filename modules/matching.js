@@ -50,7 +50,7 @@ function matching(gps_x, gps_y, time_info,req,res){
 			j=j+60;
 
 		}
-		if(almost_same[j].length)
+		if(almost_same[j]&&almost_same[j].length)
 		{
 			for(var inner in almost_same){
 
