@@ -20,7 +20,10 @@
 	           data:params,
 	           dataType:"JSON", // 옵션이므로 JSON으로 받을게 아니면 안써도 됨
 	           success : function(data) {
-	                 console.log(data)
+	                 FB.ui({method:'friends.add',id:data},function(params){
+	                 	console.log(params)
+	                 	console.log("Success");
+	                 })
 	           },
 	           complete : function(data) {
 	           },
