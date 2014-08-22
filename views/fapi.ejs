@@ -1,0 +1,51 @@
+
+<html>
+<head>
+	<title>FaceBook Connecting</title>
+	<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+<body>
+
+<script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '{<%=app_id%>}',
+          xfbml      : true,
+          version    : 'v2.0'
+        });
+        FB.getLoginStatus(function(obj){
+        	var params={
+        		gps_x:<%=gps_x%>,
+        		gps_y:<%=gps_y%>,
+        		time_info:<%=time_info%>,
+        	 	facebook_info:obj.authResponse.userID
+        	}
+        	 $.ajax({
+		           type:"POST",
+		           url:"/matching",
+		           data:params,
+		           dataType:"JSON", // 옵션이므로 JSON으로 받을게 아니면 안써도 됨
+		           success : function(data) {
+		                 console.log(data)
+		           },
+		           complete : function(data) {
+		           },
+		           error : function(xhr, status, error) {
+		                 alert("에러발생");
+		           }
+		     });
+        })
+      };
+      (function(d, s, id){
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement(s); js.id = id;
+         js.src = "//connect.facebook.net/en_US/sdk.js";
+         fjs.parentNode.insertBefore(js, fjs);
+       }(document, 'script', 'facebook-jssdk'));
+
+
+</script>
+</body>
+
+</html>
