@@ -82,7 +82,7 @@ function matching(gps_x, gps_y, time_info,req,res){
 
 
 
-exports.fisrt_matching = function(req, res){
+exports.first_matching = function(req, res){
 	var gps_x=req.body.gps_x;
 	var gps_y=req.body.gps_y;
 	var time_info=req.body.time_info;
