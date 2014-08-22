@@ -3,7 +3,7 @@ var gps_split=0.0000001;
 
 var check_even=0;
 
-var almost_same=new Array(60/time_split);
+almost_same=new Array(60/time_split);
 
 function remove_after(array_to_remove,facebook_info,res){
 	setTimeout(function(){
