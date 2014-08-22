@@ -1,5 +1,5 @@
 var time_split=2;
-var gps_split=0.0001;
+var gps_split=0.01;
 
 var check_even=0;
 
