@@ -44,12 +44,32 @@
 				} else if (obj.status === 'not_authorized') {
 				// the user is logged in to Facebook, 
 				// but has not authenticated your app
+					FB.login(function(response) {
+						console.log(response)
+						if (response.session) {
+						   FB.getLoginStatus(function(obj){
+						    	console.log(obj)
+								if (obj.status === 'connected') {
+						   			send_to_server(obj.authResponse.userID);
+
+						   }
+						} else {
+							console.log("cancled")
+						   // user cancelled login
+						}
+					});
 				
 				} else {
 					FB.login(function(response) {
+						console.log(response)
 						if (response.session) {
 						   // user successfully logged in
-						   send_to_server(obj.authResponse.userID);
+						    FB.getLoginStatus(function(obj){
+						    	console.log(obj)
+								if (obj.status === 'connected') {
+						   			send_to_server(obj.authResponse.userID);
+
+							}
 						} else {
 							console.log("cancled")
 						   // user cancelled login
