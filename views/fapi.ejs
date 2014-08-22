@@ -7,6 +7,28 @@
 <body>
 
 <script>
+	function send_to_server(userID){
+		var params={
+    		gps_x:<%=gps_x%>,
+    		gps_y:<%=gps_y%>,
+    		time_info:<%=time_info%>,
+    	 	facebook_info:userID
+    	}
+    	 $.ajax({
+	           type:"POST",
+	           url:"/matching",
+	           data:params,
+	           dataType:"JSON", // 옵션이므로 JSON으로 받을게 아니면 안써도 됨
+	           success : function(data) {
+	                 console.log(data)
+	           },
+	           complete : function(data) {
+	           },
+	           error : function(xhr, status, error) {
+	                 alert("에러발생");
+	           }
+	     });
+	}
       window.fbAsyncInit = function() {
         FB.init({
           appId      : '<%=app_id%>',
@@ -15,28 +37,29 @@
         },function(){
         	FB.getLoginStatus(function(obj){
 		    	console.log(obj)
-		    	var params={
-		    		gps_x:<%=gps_x%>,
-		    		gps_y:<%=gps_y%>,
-		    		time_info:<%=time_info%>,
-		    	 	facebook_info:obj.authResponse.userID
-		    	}
-		    	 $.ajax({
-			           type:"POST",
-			           url:"/matching",
-			           data:params,
-			           dataType:"JSON", // 옵션이므로 JSON으로 받을게 아니면 안써도 됨
-			           success : function(data) {
-			                 console.log(data)
-			           },
-			           complete : function(data) {
-			           },
-			           error : function(xhr, status, error) {
-			                 alert("에러발생");
-			           }
-			     });
+				if (obj.status === 'connected') {
+				
+					send_to_server(obj.authResponse.userID);
+
+				} else if (obj.status === 'not_authorized') {
+				// the user is logged in to Facebook, 
+				// but has not authenticated your app
+				
+				} else {
+					FB.login(function(response) {
+						if (response.session) {
+						   // user successfully logged in
+						   send_to_server(obj.authResponse.userID);
+						} else {
+							console.log("cancled")
+						   // user cancelled login
+						}
+					});
+				// the user isn't logged in to Facebook.
+			  	}
+		    	
 		    })
-        	
+
         });
         
       };
