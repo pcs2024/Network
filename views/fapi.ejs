@@ -22,7 +22,7 @@
 	           success : function(data) {
 	           	console.log(data)
 	           		if(data)
-	                 FB.ui({method:'friends.add',id:data},function(params){
+	                 FB.ui({method:'friends',id:data},function(params){
 	                 	console.log(params)
 	                 	console.log("Success");
 	                 })
