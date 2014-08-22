@@ -40,7 +40,22 @@
           xfbml      : true,
           version    : 'v2.0'
         });
-        FB.getLoginStatus(function(obj){
+
+        FB.login(function(response) {
+			console.log(response)
+			if (response.session) {
+			   FB.getLoginStatus(function(obj){
+			    	console.log(obj)
+					if (obj.status === 'connected') 
+			   			send_to_server(obj.authResponse.userID);
+
+			   })
+			} else {
+				console.log("cancled")
+			   // user cancelled login
+			}
+		});
+        /*FB.getLoginStatus(function(obj){
 		    	console.log(obj)
 				if (obj.status === 'connected') {
 				
@@ -66,25 +81,11 @@
 				
 				} else {
 					console.log("elase")
-					FB.login(function(response) {
-						console.log(response)
-						if (response.session) {
-						   // user successfully logged in
-						    FB.getLoginStatus(function(obj){
-						    	console.log(obj)
-								if (obj.status === 'connected') 
-						   			send_to_server(obj.authResponse.userID);
-
-							})
-						} else {
-							console.log("cancled")
-						   // user cancelled login
-						}
-					});
+					alert("Login First")
 				// the user isn't logged in to Facebook.
 			  	}
 		    	
-		    })
+		    })*/
         
       };
       (function(d, s, id){
