@@ -23,6 +23,7 @@ function send_other(array_to_remove,target, me){
 		if(array_to_remove[i].facebook_info==target)
 			{
 				clearTimeout(array_to_remove[i].removefuc)
+				array_to_remove[i].res.json(me)
 				array_to_remove=array_to_remove.splice(i,1);
 				break;
 			}
@@ -69,8 +70,8 @@ function matching(gps_x, gps_y, time_info,facebook_info,req,res){
 				if(is_location_matching(gps_x, gps_y,almost_same[j][inner].gps_x,almost_same[j][inner].gps_y)){
 					console.log("in")
 					remove_now(almost_same[j][inner],almost_same[j][inner].facebook_info)
-					send_other(almost_same[j],almost_same[j][inner].facebook_info,facebook_info)
 					res.json(almost_same[j][inner].facebook_info)
+					send_other(almost_same[j],almost_same[j][inner].facebook_info,facebook_info)
 					break;	
 				}else if(inner==almost_same.length-1){
 					data={}
