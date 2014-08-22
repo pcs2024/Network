@@ -51,11 +51,10 @@ function matching(gps_x, gps_y, time_info,facebook_info,req,res){
 			j=j+60;
 
 		}
-		console.log(almost_same[j],j,i,time_info)
 		if(almost_same[j]!=undefined&&almost_same[j].length>0)
 		{
 			for(var inner in almost_same){
-
+				console.log("inner",inner)
 				if(is_location_matching(gps_x, gps_y,almost_same[j].gps_x,almost_same[j].gps_y)){
 					console.log("in")
 					remove_now(almost_same[j],almost_same[j].facebook_info)
