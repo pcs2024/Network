@@ -70,6 +70,7 @@ function matching(gps_x, gps_y, time_info,facebook_info,req,res){
 					remove_after(almost_same[time_info],facebook_info,res);
 				}	
 			}
+			console.log("what")
 		}else if(i==time_split){
 			console.log("out2")
 			almost_same[time_info]=[];
