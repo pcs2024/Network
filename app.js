@@ -9,7 +9,8 @@ var http = require('http');
 var path = require('path');
 
 var app = express();
-
+var select = "select";
+var fs = require('fs');
 // all environments
 app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname, 'views'));
